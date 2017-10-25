@@ -139,18 +139,18 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
    ShiftToLayer(FUNCTION)),
 
   [FUNCTION] =  KEYMAP_STACKED
-  (___,      Key_F1,          Key_F2,     Key_F3, Key_F4, Key_F5, XXX,
-   Key_Tab,  ___,             ___,        ___,    ___,    ___,    ___,
-   Key_Home, ___,             ___,        ___,    ___,    ___,
-   Key_End,  Key_PrintScreen, Key_Insert, ___,    ___,    ___,    ___,
+  (___, Key_F1,          Key_F2,                     Key_F3,                   Key_F4,                   Key_F5, XXX,
+   ___, ___,             Consumer_ScanPreviousTrack, Consumer_PlaySlashPause,  Consumer_ScanNextTrack,   ___,    ___,
+   ___, ___,             Key_Mute,                   Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,
+   ___, Key_PrintScreen, Key_Insert,                 Key_CapsLock,              ___,                     ___,    ___,
    ___, Key_Delete, ___, ___,
    ___,
 
-   Consumer_ScanPreviousTrack, Key_F6,                 Key_F7,                   Key_F8,                   Key_F9,          Key_F10,          Key_F11,
-   Consumer_PlaySlashPause,    Consumer_ScanNextTrack, Key_LeftCurlyBracket,     Key_RightCurlyBracket,    Key_LeftBracket, Key_RightBracket, Key_F12,
-                               Key_LeftArrow,          Key_DownArrow,            Key_UpArrow,              Key_RightArrow,  ___,              ___,
-   Key_PcApplication,          Key_Mute,               Consumer_VolumeDecrement, Consumer_VolumeIncrement, Key_Pipe,        Key_Backslash,    Key_KeypadNumLock,
-   ___, ___, Key_Enter, ___,
+   ___,               Key_F6,        Key_F7,               Key_F8,                Key_F9,          Key_F10,          Key_F11,
+   ___,               ___,           Key_LeftCurlyBracket, Key_RightCurlyBracket, Key_LeftBracket, Key_RightBracket, Key_F12,
+                      Key_LeftArrow, Key_DownArrow,        Key_UpArrow,           Key_RightArrow,  ___,              ___,
+   Key_PcApplication, Key_Home,      Key_PageDown,         Key_PageUp,            Key_End,         ___,              Key_KeypadNumLock,
+   ___, ___, ___, ___,
    ___),
 
 
