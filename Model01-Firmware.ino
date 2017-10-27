@@ -251,6 +251,9 @@ void setup() {
     // We start with the LED effect that turns off all the LEDs.
     &LEDOff,
 
+    // These static effects turn your keyboard's LEDs a variety of colors
+    &solidRed, &solidOrange, &solidYellow, &solidGreen, &solidBlue, &solidIndigo, &solidViolet,
+
     // The rainbow effect changes the color of all of the keyboard's keys at the same time
     // running through all the colors of the rainbow.
     &LEDRainbowEffect,
@@ -262,9 +265,6 @@ void setup() {
     // The chase effect follows the adventure of a blue pixel which chases a red pixel across
     // your keyboard. Spoiler: the blue pixel never catches the red pixel
     &LEDChaseEffect,
-
-    // These static effects turn your keyboard's LEDs a variety of colors
-    &solidRed, &solidOrange, &solidYellow, &solidGreen, &solidBlue, &solidIndigo, &solidViolet,
 
     // The breathe effect slowly pulses all of the LEDs on your keyboard
     &LEDBreatheEffect,
