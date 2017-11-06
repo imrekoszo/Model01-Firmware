@@ -53,7 +53,7 @@
 // Support for Keyboardio's internal keyboard testing mode
 // #include "Kaleidoscope-Model01-TestMode.h"
 
-// #include "Kaleidoscope-SpaceCadet.h"
+#include "Kaleidoscope-SpaceCadet.h"
 
 /** This 'enum' is a list of all the macros used by the Model 01's firmware
   * The names aren't particularly important. What is important is that each
@@ -283,13 +283,13 @@ void setup() {
     // The macros plugin adds support for macros
     &Macros
     
-    //,&SpaceCadet
+    ,&SpaceCadet
   );
 
   //Set the keymap with a 250ms timeout per-key
   //Setting is {KeyThatWasPressed, AlternativeKeyToSend, TimeoutInMS}
   //Note: must end with the SPACECADET_MAP_END delimiter
- /* static kaleidoscope::SpaceCadet::KeyBinding spacecadetmap[] = {
+  static kaleidoscope::SpaceCadet::KeyBinding spacecadetmap[] = {
     {Key_LeftShift, Key_LeftBracket, 250}
     , {Key_RightShift, Key_RightBracket, 250}
     , {Key_RightAlt, Key_LeftCurlyBracket, 250}
@@ -301,7 +301,7 @@ void setup() {
 
   //Set the map.
   SpaceCadet.map = spacecadetmap;
-*/
+
   // While we hope to improve this in the future, the NumLock plugin
   // needs to be explicitly told which keymap layer is your numpad layer
   NumLock.numPadLayer = NUMPAD;
