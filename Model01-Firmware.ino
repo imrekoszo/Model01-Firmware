@@ -125,10 +125,10 @@ enum { QWERTY, FUNCTION, NUMPAD }; // layers
 const Key keymaps[][ROWS][COLS] PROGMEM = {
 
   [QWERTY] = KEYMAP_STACKED
-  (___,                          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext,
+  (Key_Escape,                   Key_1, Key_2, Key_3, Key_4, Key_5, ___,
    Key_Backtick,                 Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
    Key_Backslash,                Key_A, Key_S, Key_D, Key_F, Key_G,
-   Key_NonUsBackslashAndPipe,    Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,
+   Key_NonUsBackslashAndPipe,    Key_Z, Key_X, Key_C, Key_V, Key_B, ___,
    Key_LeftGui, Key_Backspace, Key_LeftControl, Key_LeftShift,
    ShiftToLayer(FUNCTION),
 
@@ -136,11 +136,11 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
    Key_Enter,       Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_Equals,
                     Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
    Key_RightAlt,    Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
-   Key_RightShift,  Key_RightControl, Key_Spacebar, Key_LeftAlt,
+   Key_RightShift, Key_RightControl, Key_Spacebar, Key_LeftAlt,
    ShiftToLayer(FUNCTION)),
 
   [FUNCTION] =  KEYMAP_STACKED
-  (___, Key_F1,          Key_F2,                     Key_F3,                   Key_F4,                   Key_F5, XXX,
+  (___, Key_F1,          Key_F2,                     Key_F3,                   Key_F4,                   Key_F5, Key_LEDEffectNext,
    ___, ___,             Consumer_ScanPreviousTrack, Consumer_PlaySlashPause,  Consumer_ScanNextTrack,   ___,    ___,
    ___, ___,             Key_Mute,                   Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,
    ___, Key_PrintScreen, Key_Insert,                 Key_CapsLock,              ___,                     ___,    ___,
