@@ -1,6 +1,8 @@
 # Keyboardio Model 01 Firmware
 
-The default firmware for the Keyboardio Model 01
+Keyboardio Model 01 firmware with small alterations from the default one.
+
+As it uses a few third-party plugins, it might be necessary to point the `~/Arduino/hardware/keyboardio/avr` folder to [imrekoszo/keyboardio-Arduino-Boards](https://github.com/imrekoszo/keyboardio-Arduino-Boards).
 
 This is a quick start guide for folks who are familiar with Arduino and generally know what they are doing. If you want a deeper introduction, [check out the wiki.](https://github.com/keyboardio/Kaleidoscope/wiki/Keyboardio-Model-01-Introduction)
 
