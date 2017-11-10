@@ -55,6 +55,8 @@
 
 #include "Kaleidoscope-SpaceCadet.h"
 
+#include "Kaleidoscope-LEDEffect-DigitalRain.h"
+
 /** This 'enum' is a list of all the macros used by the Model 01's firmware
   * The names aren't particularly important. What is important is that each
   * is unique.
@@ -251,6 +253,9 @@ void setup() {
     // We start with the LED effect that turns off all the LEDs.
     &LEDOff,
 
+    // Yeah digital rain
+    &LEDDigitalRainEffect,
+
     // These static effects turn your keyboard's LEDs a variety of colors
     &solidRed, &solidOrange, &solidYellow, &solidGreen, &solidBlue, &solidIndigo, &solidViolet,
 
@@ -313,6 +318,8 @@ void setup() {
   // This draws more than 500mA, but looks much nicer than a dimmer effect
   LEDRainbowEffect.brightness(150);
   LEDRainbowWaveEffect.brightness(150);
+
+  LEDDigitalRainEffect.DROP_TICKS = 20; // Make the rain fall faster
 
   // The LED Stalker mode has a few effects. The one we like is
   // called 'BlazingTrail'. For details on other options,
