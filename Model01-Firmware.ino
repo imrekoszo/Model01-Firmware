@@ -15,8 +15,8 @@
 // Support for controlling the keyboard's LEDs
 #include "Kaleidoscope-LEDControl.h"
 
-// Support for "Numlock" mode, which is mostly just the Numlock specific LED mode
-#include "Kaleidoscope-Numlock.h"
+// Support for "Numpad" mode, which is mostly just the Numpad specific LED mode
+#include "Kaleidoscope-NumPad.h"
 
 // Support for an "LED off mode"
 #include "LED-Off.h"
@@ -75,9 +75,10 @@
   * The third one is layer 2.
   * This 'enum' lets us use names like QWERTY, FUNCTION, and NUMPAD in place of
   * the numbers 0, 1 and 2.
+  *
   */
 
-enum { QWERTY, FUNCTION, NUMPAD }; // layers
+enum { QWERTY, NUMPAD, FUNCTION }; // layers
 
 /* This comment temporarily turns off astyle's indent enforcement
  *   so we can make the keymaps actually resemble the physical key layout better
@@ -101,22 +102,6 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
    Key_RightShift, Key_RightControl, Key_Spacebar, Key_LeftAlt,
    ShiftToLayer(FUNCTION)),
 
-  [FUNCTION] =  KEYMAP_STACKED
-  (___, Key_F1,          Key_F2,                     Key_F3,                   Key_F4,                   Key_F5, Key_LEDEffectNext,
-   ___, ___,             Consumer_ScanPreviousTrack, Consumer_PlaySlashPause,  Consumer_ScanNextTrack,   ___,    ___,
-   ___, ___,             Key_Mute,                   Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,
-   ___, Key_PrintScreen, Key_Insert,                 Key_CapsLock,              ___,                     ___,    ___,
-   ___, Key_Delete, ___, ___,
-   ___,
-
-   ___,               Key_F6,        Key_F7,               Key_F8,                Key_F9,          Key_F10,          Key_F11,
-   ___,               ___,           Key_LeftCurlyBracket, Key_RightCurlyBracket, Key_LeftBracket, Key_RightBracket, Key_F12,
-                      Key_LeftArrow, Key_DownArrow,        Key_UpArrow,           Key_RightArrow,  ___,              ___,
-   Key_PcApplication, Key_Home,      Key_PageDown,         Key_PageUp,            Key_End,         ___,              Key_KeypadNumLock,
-   ___, ___, ___, ___,
-   ___),
-
-
   [NUMPAD] =  KEYMAP_STACKED
   (___,  ___,           Key_Clear,       Key_KeypadDivide,   Key_KeypadMultiply, Key_KeypadEquals,   ___,
    ___,  ___,           Key_Keypad7,     Key_Keypad8,        Key_Keypad9,        Key_KeypadSubtract, ___,
@@ -129,6 +114,21 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
    ___,  ___, ___, ___, ___, ___, ___,
          ___, ___, ___, ___, ___, ___,
    ___,  ___, ___, ___, ___, ___, ___,
+   ___, ___, ___, ___,
+   ___),
+
+  [FUNCTION] =  KEYMAP_STACKED
+  (___, Key_F1,          Key_F2,                     Key_F3,                   Key_F4,                   Key_F5, Key_LEDEffectNext,
+   ___, ___,             Consumer_ScanPreviousTrack, Consumer_PlaySlashPause,  Consumer_ScanNextTrack,   ___,    ___,
+   ___, ___,             Key_Mute,                   Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,
+   ___, Key_PrintScreen, Key_Insert,                 Key_CapsLock,              ___,                     ___,    ___,
+   ___, Key_Delete, ___, ___,
+   ___,
+
+   ___,               Key_F6,        Key_F7,               Key_F8,                Key_F9,          Key_F10,          Key_F11,
+   ___,               ___,           Key_LeftCurlyBracket, Key_RightCurlyBracket, Key_LeftBracket, Key_RightBracket, Key_F12,
+                      Key_LeftArrow, Key_DownArrow,        Key_UpArrow,           Key_RightArrow,  ___,              ___,
+   Key_PcApplication, Key_Home,      Key_PageDown,         Key_PageUp,            Key_End,         ___,              LockLayer(NUMPAD),
    ___, ___, ___, ___,
    ___)
 };
@@ -184,9 +184,9 @@ void setup() {
     // The breathe effect slowly pulses all of the LEDs on your keyboard
     &LEDBreatheEffect,
 
-    // The numlock plugin is responsible for lighting up the 'numpad' mode
+    // The numpad plugin is responsible for lighting up the 'numpad' mode
     // with a custom LED effect
-    &NumLock,
+    &NumPad,
 
     &SpaceCadet
   );
@@ -206,9 +206,9 @@ void setup() {
 
   SpaceCadet.map = spacecadetmap;
 
-  // While we hope to improve this in the future, the NumLock plugin
+  // While we hope to improve this in the future, the NumPad plugin
   // needs to be explicitly told which keymap layer is your numpad layer
-  NumLock.numPadLayer = NUMPAD;
+  NumPad.numPadLayer = NUMPAD;
 
   // We set the brightness of the rainbow effects to 150 (on a scale of 0-255)
   // This draws more than 500mA, but looks much nicer than a dimmer effect
