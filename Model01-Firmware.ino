@@ -122,7 +122,7 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
    ___, ___,             Consumer_ScanPreviousTrack, Consumer_PlaySlashPause,  Consumer_ScanNextTrack,   ___,    ___,
    ___, ___,             Key_Mute,                   Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,
    ___, Key_PrintScreen, Key_Insert,                 Key_CapsLock,              ___,                     ___,    ___,
-   ___, Key_Delete, ___, ___,
+   ___, ___, ___, ___,
    ___,
 
    ___,               Key_F6,        Key_F7,        Key_F8,      Key_F9,         Key_F10, Key_F11,
