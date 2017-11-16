@@ -88,10 +88,10 @@ enum { QWERTY, NUMPAD, FUNCTION }; // layers
 const Key keymaps[][ROWS][COLS] PROGMEM = {
 
   [QWERTY] = KEYMAP_STACKED
-  (Key_Escape,                   Key_1, Key_2, Key_3, Key_4, Key_5, ___,
+  (Key_Escape,                   Key_1, Key_2, Key_3, Key_4, Key_5, Key_Delete,
    Key_Backtick,                 Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
    Key_Backslash,                Key_A, Key_S, Key_D, Key_F, Key_G,
-   Key_NonUsBackslashAndPipe,    Key_Z, Key_X, Key_C, Key_V, Key_B, ___,
+   Key_NonUsBackslashAndPipe,    Key_Z, Key_X, Key_C, Key_V, Key_B, Key_LeftAlt,
    Key_LeftGui, Key_Backspace, Key_LeftControl, Key_LeftShift,
    ShiftToLayer(FUNCTION),
 
@@ -197,8 +197,8 @@ void setup() {
   static kaleidoscope::SpaceCadet::KeyBinding spacecadetmap[] = {
     {Key_LeftShift, Key_LeftBracket, 250}
     , {Key_RightShift, Key_RightBracket, 250}
-    , {Key_RightAlt, Key_LeftCurlyBracket, 250}
-    , {Key_LeftAlt, Key_RightCurlyBracket, 250}
+    , {Key_LeftAlt, Key_LeftCurlyBracket, 250}
+    , {Key_RightAlt, Key_RightCurlyBracket, 250}
     , {Key_LeftControl, Key_LeftParen, 250}
     , {Key_RightControl, Key_RightParen, 250}
     , SPACECADET_MAP_END
