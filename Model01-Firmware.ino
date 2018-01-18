@@ -30,6 +30,9 @@
 // Support for LED modes that pulse the keyboard's LED in a rainbow pattern
 #include "Kaleidoscope-LEDEffect-Rainbow.h"
 
+// Support for host power management (suspend & wakeup)
+#include "Kaleidoscope-HostPowerManagement.h"
+
 #include "Kaleidoscope-SpaceCadet.h"
 
 #include "Kaleidoscope-LEDEffect-DigitalRain.h"
@@ -147,6 +150,33 @@ static kaleidoscope::LEDSolidColor solidBlue(0, 70, 130);
 static kaleidoscope::LEDSolidColor solidIndigo(0, 0, 170);
 static kaleidoscope::LEDSolidColor solidViolet(130, 0, 120);
 
+/** toggleLedsOnSuspendResume toggles the LEDs off when the host goes to sleep,
+ * and turns them back on when it wakes up.
+ */
+void toggleLedsOnSuspendResume(kaleidoscope::HostPowerManagement::Event event) {
+  switch (event) {
+  case kaleidoscope::HostPowerManagement::Suspend:
+    LEDControl.paused = true;
+    LEDControl.set_all_leds_to({0, 0, 0});
+    LEDControl.syncLeds();
+    break;
+  case kaleidoscope::HostPowerManagement::Resume:
+    LEDControl.paused = false;
+    LEDControl.refreshAll();
+    break;
+  case kaleidoscope::HostPowerManagement::Sleep:
+    break;
+  }
+}
+
+/** hostPowerManagementEventHandler dispatches power management events (suspend,
+ * resume, and sleep) to other functions that perform action based on these
+ * events.
+ */
+void hostPowerManagementEventHandler(kaleidoscope::HostPowerManagement::Event event) {
+  toggleLedsOnSuspendResume(event);
+}
+
 /** The 'setup' function is one of the two standard Arduino sketch functions.
   * It's called when your keyboard first powers up. This is where you set up
   * Kaleidoscope and any plugins.
@@ -188,6 +218,10 @@ void setup() {
     // with a custom LED effect
     &NumPad,
 
+    // The HostPowerManagement plugin enables waking up the host from suspend,
+    // and allows us to turn LEDs off when it goes to sleep.
+    &HostPowerManagement,
+
     &SpaceCadet
   );
 
@@ -217,6 +251,9 @@ void setup() {
 
   LEDDigitalRainEffect.DROP_TICKS = 22;
   LEDDigitalRainEffect.NEW_DROP_PROBABILITY = 15;
+
+  // We want the keyboard to be able to wake the host up from suspend.
+  HostPowerManagement.enableWakeup();
 
   // We want to make sure that the firmware starts with LED effects off
   // This avoids over-taxing devices that don't have a lot of power to share
