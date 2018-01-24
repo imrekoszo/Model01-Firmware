@@ -251,6 +251,7 @@ void setup() {
 
   LEDDigitalRainEffect.DROP_TICKS = 22;
   LEDDigitalRainEffect.NEW_DROP_PROBABILITY = 15;
+  LEDDigitalRainEffect.COLOR_CHANNEL = 2;
 
   // We want the keyboard to be able to wake the host up from suspend.
   HostPowerManagement.enableWakeup();
