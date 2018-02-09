@@ -121,7 +121,7 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
    ___),
 
   [FUNCTION] =  KEYMAP_STACKED
-  (___, Key_F1,          Key_F2,                     Key_F3,                   Key_F4,                   Key_F5, Key_LEDEffectNext,
+  (XXX, Key_F1,          Key_F2,                     Key_F3,                   Key_F4,                   Key_F5, Key_LEDEffectNext,
    ___, ___,             Consumer_ScanPreviousTrack, Consumer_PlaySlashPause,  Consumer_ScanNextTrack,   ___,    ___,
    ___, ___,             Key_Mute,                   Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,
    ___, Key_PrintScreen, Key_Insert,                 Key_CapsLock,              ___,                     ___,    ___,
