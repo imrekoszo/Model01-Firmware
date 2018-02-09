@@ -259,7 +259,8 @@ void setup() {
   // We want to make sure that the firmware starts with LED effects off
   // This avoids over-taxing devices that don't have a lot of power to share
   // with USB devices
-  LEDOff.activate();
+  // eh feck it, turn the lights on right away.
+  solidYellow.activate();
 }
 
 /** loop is the second of the standard Arduino sketch functions.
