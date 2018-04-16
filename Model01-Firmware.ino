@@ -194,24 +194,17 @@ void setup() {
     // LEDControl provides support for other LED modes
     &LEDControl,
 
-    // We start with the LED effect that turns off all the LEDs.
+    &solidYellow,
     &LEDOff,
-
-    // Yeah digital rain
     &LEDDigitalRainEffect,
-
-    // These static effects turn your keyboard's LEDs a variety of colors
-    &solidRed, &solidOrange, &solidYellow, &solidGreen, &solidBlue, &solidIndigo, &solidViolet,
-
-    // The rainbow effect changes the color of all of the keyboard's keys at the same time
-    // running through all the colors of the rainbow.
+    &solidRed,
+    &solidOrange,
+    &solidGreen,
+    &solidBlue,
+    &solidIndigo,
+    &solidViolet,
     &LEDRainbowEffect,
-
-    // The rainbow wave effect lights up your keyboard with all the colors of a rainbow
-    // and slowly moves the rainbow across your keyboard
     &LEDRainbowWaveEffect,
-
-    // The breathe effect slowly pulses all of the LEDs on your keyboard
     &LEDBreatheEffect,
 
     // The numpad plugin is responsible for lighting up the 'numpad' mode
@@ -261,6 +254,8 @@ void setup() {
   // with USB devices
   // eh feck it, turn the lights on right away.
   solidYellow.activate();
+  LEDControl.paused = false;
+  LEDControl.refreshAll();
 }
 
 /** loop is the second of the standard Arduino sketch functions.
