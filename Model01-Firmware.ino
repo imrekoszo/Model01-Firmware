@@ -30,6 +30,9 @@
 // Support for LED modes that pulse the keyboard's LED in a rainbow pattern
 #include "Kaleidoscope-LEDEffect-Rainbow.h"
 
+// Support for Keyboardio's internal keyboard testing mode
+#include "Kaleidoscope-Model01-TestMode.h"
+
 // Support for host power management (suspend & wakeup)
 #include "Kaleidoscope-HostPowerManagement.h"
 
@@ -190,6 +193,7 @@ void setup() {
   // The order can be important. For example, LED effects are
   // added in the order they're listed here.
   Kaleidoscope.use(
+    &TestMode,
 
     // LEDControl provides support for other LED modes
     &LEDControl,
