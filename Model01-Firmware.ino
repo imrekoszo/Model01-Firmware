@@ -25,13 +25,13 @@
 #include "Kaleidoscope-LEDEffect-SolidColor.h"
 
 // Support for an LED mode that makes all the LEDs 'breathe'
-#include "Kaleidoscope-LEDEffect-Breathe.h"
+// #include "Kaleidoscope-LEDEffect-Breathe.h"
 
 // Support for LED modes that pulse the keyboard's LED in a rainbow pattern
 #include "Kaleidoscope-LEDEffect-Rainbow.h"
 
 // Support for Keyboardio's internal keyboard testing mode
-#include "Kaleidoscope-Model01-TestMode.h"
+// #include "Kaleidoscope-Model01-TestMode.h"
 
 // Support for host power management (suspend & wakeup)
 #include "Kaleidoscope-HostPowerManagement.h"
@@ -155,13 +155,13 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
 // These 'solid' color effect definitions define a rainbow of
 // LED color modes calibrated to draw 500mA or less on the
 // Keyboardio Model 01.
-static kaleidoscope::LEDSolidColor solidRed(160, 0, 0);
-static kaleidoscope::LEDSolidColor solidOrange(140, 70, 0);
+// static kaleidoscope::LEDSolidColor solidRed(160, 0, 0);
+// static kaleidoscope::LEDSolidColor solidOrange(140, 70, 0);
 static kaleidoscope::LEDSolidColor solidYellow(130, 100, 0);
 static kaleidoscope::LEDSolidColor solidGreen(0, 160, 0);
 static kaleidoscope::LEDSolidColor solidBlue(0, 70, 130);
-static kaleidoscope::LEDSolidColor solidIndigo(0, 0, 170);
-static kaleidoscope::LEDSolidColor solidViolet(130, 0, 120);
+// static kaleidoscope::LEDSolidColor solidIndigo(0, 0, 170);
+// static kaleidoscope::LEDSolidColor solidViolet(130, 0, 120);
 
 /** toggleLedsOnSuspendResume toggles the LEDs off when the host goes to sleep,
  * and turns them back on when it wakes up.
@@ -203,23 +203,23 @@ void setup() {
   // The order can be important. For example, LED effects are
   // added in the order they're listed here.
   Kaleidoscope.use(
-    &TestMode,
+    // &TestMode,
 
     // LEDControl provides support for other LED modes
     &LEDControl,
 
-    &solidYellow,
     &LEDOff,
-    &LEDDigitalRainEffect,
-    &solidRed,
-    &solidOrange,
-    &solidGreen,
-    &solidBlue,
-    &solidIndigo,
-    &solidViolet,
     &LEDRainbowEffect,
     &LEDRainbowWaveEffect,
-    &LEDBreatheEffect,
+    // &LEDBreatheEffect,
+    &LEDDigitalRainEffect,
+    // &solidRed,
+    // &solidOrange,
+    &solidYellow,
+    &solidGreen,
+    &solidBlue,
+    // &solidIndigo,
+    // &solidViolet,
 
     // The numpad plugin is responsible for lighting up the 'numpad' mode
     // with a custom LED effect
@@ -270,10 +270,7 @@ void setup() {
   // We want to make sure that the firmware starts with LED effects off
   // This avoids over-taxing devices that don't have a lot of power to share
   // with USB devices
-  // eh feck it, turn the lights on right away.
-  solidYellow.activate();
-  LEDControl.paused = false;
-  LEDControl.refreshAll();
+  LEDOff.activate();
 }
 
 /** loop is the second of the standard Arduino sketch functions.
