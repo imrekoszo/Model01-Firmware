@@ -41,6 +41,8 @@
 #include "Kaleidoscope-LEDEffect-DigitalRain.h"
 
 
+#define _OSX_
+
 
 /** The Model 01's key layouts are defined as 'keymaps'. By default, there are three
   * keymaps: The standard QWERTY keymap, the "Function layer" keymap and the "Numpad"
@@ -98,14 +100,22 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
    Key_Backtick,              Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
    Key_Backslash,             Key_A, Key_S, Key_D, Key_F, Key_G,
    Key_NonUsBackslashAndPipe, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_LeftAlt,
+#ifdef _OSX_
+   Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,
+#else
    Key_LeftGui, Key_Backspace, Key_LeftControl, Key_LeftShift,
+#endif
    ShiftToLayer(FUNCTION),
 
    Key_RightBracket, Key_6, Key_7, Key_8,     Key_9,         Key_0,         Key_Delete,
    Key_Enter,        Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_Equals,
                      Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
    Key_RightAlt,     Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
+#ifdef _OSX_
+   Key_RightShift, Key_RightControl, Key_Spacebar, Key_RightGui,
+#else
    Key_RightShift, Key_RightControl, Key_Spacebar, Key_LeftAlt,
+#endif
    ShiftToLayer(FUNCTION)),
 
   [NUMPAD] =  KEYMAP_STACKED
@@ -230,7 +240,11 @@ void setup() {
     , {Key_RightShift, Key_RightBracket, 250}
     , {Key_LeftAlt, Key_LeftCurlyBracket, 250}
     , {Key_RightAlt, Key_RightCurlyBracket, 250}
+#ifdef _OSX_
+    , {Key_LeftGui, Key_LeftParen, 250}
+#else
     , {Key_LeftControl, Key_LeftParen, 250}
+#endif
     , {Key_RightControl, Key_RightParen, 250}
     , SPACECADET_MAP_END
   };
