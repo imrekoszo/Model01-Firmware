@@ -134,10 +134,10 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
    ___),
 
   [FUNCTION] =  KEYMAP_STACKED
-  (XXX, Key_F1,          Key_F2,                     Key_F3,                   Key_F4,                   Key_F5, Key_LEDEffectNext,
-   ___, ___,             Consumer_ScanPreviousTrack, Consumer_PlaySlashPause,  Consumer_ScanNextTrack,   ___,    ___,
+  (XXX, Key_F1,          Key_F2,                     Key_F3,                   Key_F4,                   Key_F5,        Key_LEDEffectNext,
+   ___, ___,             Consumer_ScanPreviousTrack, Consumer_PlaySlashPause,  Consumer_ScanNextTrack,   Consumer_Stop, ___,
    ___, ___,             Key_Mute,                   Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,
-   ___, Key_PrintScreen, Key_Insert,                 Key_CapsLock,              ___,                     ___,    ___,
+   ___, Key_PrintScreen, Key_Insert,                 Key_CapsLock,              ___,                     ___,           ___,
    ___, ___, ___, ___,
    ___,
 
@@ -242,6 +242,8 @@ void setup() {
     , {Key_RightAlt, Key_RightCurlyBracket, 250}
 #ifdef _OSX_
     , {Key_LeftGui, Key_LeftParen, 250}
+    , {Key_LeftControl, LSHIFT(Key_Comma), 250}
+    , {Key_RightGui, LSHIFT(Key_Period), 250}
 #else
     , {Key_LeftControl, Key_LeftParen, 250}
 #endif
@@ -262,7 +264,7 @@ void setup() {
 
   LEDDigitalRainEffect.DROP_TICKS = 22;
   LEDDigitalRainEffect.NEW_DROP_PROBABILITY = 15;
-  LEDDigitalRainEffect.COLOR_CHANNEL = 2;
+//  LEDDigitalRainEffect.COLOR_CHANNEL = 2;
 
   // We want the keyboard to be able to wake the host up from suspend.
   HostPowerManagement.enableWakeup();
